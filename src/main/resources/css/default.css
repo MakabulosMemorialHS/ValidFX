@@ -1,0 +1,124 @@
+/* *******************************************************************************
+ * default.css
+ *
+ * Style sheet for PressConFX. This is a rather generic
+ * stylesheet. If you want to create your own style rules
+ * for PressConFX, copy this stylesheet to PressConFX.css
+ * and modify the style rules there.
+ *
+ * PressConFX.css overrides the rules of default.css.
+ *
+ *
+ * Information about the CSS properties mentioned herein can be
+ * found in
+ *
+ * http://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#intro
+ *
+ * For choosing HTML colors go to
+ *
+ * http://www.w3schools.com/colors/colors_picker.asp
+ *
+ * The property names are very confusing. Read the comments besides each
+ * CSS property very carefully.
+ *
+ * ******************************************************************************/
+
+
+/* 
+   These settings are for
+   Stage --> Scene --> BorderPane --> GridPane
+*/
+
+.grid {
+    /* -fx-background-color : #fff2cc; */
+    -fx-background-image : url("dark-blue-background-portrait.jpg");
+
+    /* The following rules are meant for background images.
+       Commented out since I don't need it for the current rule.
+       Placed here for reference. I might need them for some other rules.
+ 
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 900 506;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    */
+
+    -fx-background-radius : 5.0;
+    -fx-background-insets : 5.0 5.0 5.0 5.0;
+    -fx-hgap : 10pt; /* intergap spacing among horizontal cells */
+    -fx-vgap : 15pt; /* intergap spacing between rows of cells */
+    -fx-padding : 20pt; /* margin around the grid */
+    -fx-spacing : 10pt;  /* spaces between child nodes */
+    -fx-alignment : center; /* Alignment of the child nodes within the grid. */
+}
+
+.grid2 {
+    /* -fx-background-color : #fff2cc; */
+    -fx-background-image : url("dark-blue-background-portrait.jpg");
+
+    /* The following rules are meant for background images.
+       Commented out since I don't need it for the current rule.
+       Placed here for reference. I might need them for some other rules.
+ 
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 900 506;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    */
+
+    -fx-fill : #fff9e6;   /* This would be the font color. No joking. */
+    -fx-background-radius : 5.0;
+    -fx-background-insets : 5.0 5.0 5.0 5.0;
+    -fx-padding : 30pt; /* margin around the grid */
+    -fx-spacing : 5pt;  /* spaces between child nodes */
+    -fx-alignment : left; /* Alignment of the child nodes within the grid. */
+}
+
+
+
+/* For the HBox containing the OK and Cancel Buttons. */
+
+.button-box {
+    -fx-alignment : center-right;   /* Where the buttons are located. */
+    -fx-padding : 5pt;              /* The spacing around contents of the HBox */
+    -fx-spacing : 10pt;             /* Spacing between Buttons */
+    -fx-background-color : #35466b; /* Color of the HBox */
+}
+
+
+/* For the TextFields. I find the default color so glaring. */
+
+.text-entries {
+    -fx-background-color : #c9ccd4;
+}
+
+.h1 { /* For uses similar to HTML's H1 tag. */
+    -fx-font-size : 17pt;
+    -fx-fill : #fff9e6;   /* This would be the font color. No joking. */
+    -fx-text-alignment : center;
+    -fx-font-weight : normal;
+    -fx-padding : 15pt;
+}
+
+
+.h2 { /* For use similar to HTML's H2. */
+    -fx-font-size : 14pt;
+    -fx-fill : #1a0008;
+    -fx-text-alignment : center;
+    -fx-font-weight : normal;
+}
+
+
+.field-labels { /* Used for labelling text fields */
+    -fx-font-size : 12pt;
+    -fx-text-alignment : center;
+    -fx-fill : #fff9e6;   /* This would be the font color. No joking. */
+}
+
+
+.normaltext { /* Used for normal sized Text labels */
+    /* -fx-font-size : 12pt; */
+    -fx-text-alignment : right;
+    /* -fx-fill : #fff9e6;   This would be the font color. No joking. */
+}
+

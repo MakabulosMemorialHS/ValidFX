@@ -112,7 +112,8 @@
 .field-labels { /* Used for labelling text fields */
     -fx-font-size : 12pt;
     -fx-text-alignment : center;
-    -fx-fill : #fff9e6;   /* This would be the font color. No joking. */
+    -fx-fill : #ffffff;    /* This is the font color. It is pure white. */
+    /* -fx-fill : #fff9e6;   This is the old color. */
 }
 
 

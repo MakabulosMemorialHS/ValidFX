@@ -1,6 +1,7 @@
 apply plugin: 'java'
 
-task runexec(type: Exec) {
-    commandLine 'java', '-cp', 'build/classes/main', 'ph.mmhsvictoria.apps.validfx.ValidFX'
+task runapp << {
+    String cmd = "java -cp build/classes/main:src/main/resources ph.mmhsvictoria.apps.validfx.ValidFX"
+    cmd.execute()
 }
 

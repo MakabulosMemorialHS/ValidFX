@@ -13,6 +13,7 @@
 package ph.mmhsvictoria.apps.validfx;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -99,8 +100,16 @@ public class ValidFX extends Application {
         HBox hb4 = new HBox();
         hb4.getStyleClass().add("button-box");
         Button cancelBtn = new Button("Cancel");
+        cancelBtn.setCancelButton(true);
 
-
+        cancelBtn.setOnAction(
+            new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    Platform.exit();
+                }
+            }
+        );
+ 
         Button okBtn = new Button("OK");
         hb4.getChildren().addAll(cancelBtn, okBtn);
         rootLayout.setBottom(hb4);

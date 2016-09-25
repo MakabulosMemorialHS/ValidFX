@@ -27,11 +27,16 @@
 /* 
    These settings are for
    Stage --> Scene --> BorderPane --> GridPane
+
+   The palette comes from:
+
+   http://paletton.com/#uid=14q0u0kllll9rGbfosyrie8zI6X
+
 */
 
 .grid {
-    /* -fx-background-color : #fff2cc; */
-    -fx-background-image : url("dark-blue-background-portrait.jpg");
+    -fx-background-color : #110326; 
+    /* -fx-background-image : url("dark-blue-background-portrait.jpg"); */
 
     /* The following rules are meant for background images.
        Commented out since I don't need it for the current rule.
@@ -43,8 +48,8 @@
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
     */
 
-    -fx-background-radius : 5.0;
-    -fx-background-insets : 5.0 5.0 5.0 5.0;
+    /* -fx-background-radius : 5.0; This sets radius of rounded corners. */
+    /* -fx-background-insets : 5.0 5.0 5.0 5.0; Uncomment if you want a white border (inset) around the Widget */
     -fx-hgap : 10pt; /* intergap spacing among horizontal cells */
     -fx-vgap : 15pt; /* intergap spacing between rows of cells */
     -fx-padding : 20pt; /* margin around the grid */
@@ -53,8 +58,8 @@
 }
 
 .grid2 {
-    /* -fx-background-color : #fff2cc; */
-    -fx-background-image : url("dark-blue-background-portrait.jpg");
+    -fx-background-color : #110326; 
+    /* -fx-background-image : url("dark-blue-background-portrait.jpg"); */
 
     /* The following rules are meant for background images.
        Commented out since I don't need it for the current rule.
@@ -82,14 +87,14 @@
     -fx-alignment : center-right;   /* Where the buttons are located. */
     -fx-padding : 5pt;              /* The spacing around contents of the HBox */
     -fx-spacing : 10pt;             /* Spacing between Buttons */
-    -fx-background-color : #35466b; /* Color of the HBox */
+    -fx-background-color : #28114d; /* Color of the HBox */
 }
 
 
 /* For the TextFields. I find the default color so glaring. */
 
 .text-entries {
-    -fx-background-color : #c9ccd4;
+    -fx-background-color : #a994ca;
 }
 
 .h1 { /* For uses similar to HTML's H1 tag. */

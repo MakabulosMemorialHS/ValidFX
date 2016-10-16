@@ -2,6 +2,8 @@ apply plugin: 'java'
 
 task runapp << {
     String cmd = "java -cp build/classes/main:src/main/resources ph.mmhsvictoria.apps.validfx.ValidFX"
-    cmd.execute()
+
+    String retval = cmd.execute().getText();
+    System.out.println(retval);
 }
 

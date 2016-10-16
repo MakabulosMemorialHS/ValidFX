@@ -105,6 +105,9 @@
     -fx-padding : 15pt;
 }
 
+.dialog-pane {
+    -fx-background-color : #a994ca;
+}
 
 .h2 { /* For use similar to HTML's H2. */
     -fx-font-size : 14pt;

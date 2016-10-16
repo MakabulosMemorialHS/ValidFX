@@ -12,10 +12,16 @@
  * *******************************************************************/
 package ph.mmhsvictoria.apps.validfx;
 
+import java.lang.*;
+import java.util.*;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -99,6 +105,22 @@ public class ValidFX extends Application {
 
         HBox hb4 = new HBox();
         hb4.getStyleClass().add("button-box");
+
+
+        Button clearBtn = new Button("Clear");
+        clearBtn.setCancelButton(true);
+
+        clearBtn.setOnAction(
+            new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    fnameTF.setText("");
+                    targTF.setText(""); 
+                    tValue.setText(""); 
+                }
+            }
+        );
+ 
+
         Button cancelBtn = new Button("Cancel");
         cancelBtn.setCancelButton(true);
 
@@ -110,11 +132,41 @@ public class ValidFX extends Application {
             }
         );
  
+
         Button okBtn = new Button("OK");
-        hb4.getChildren().addAll(cancelBtn, okBtn);
+
+        okBtn.setOnAction(
+            new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    if (fnameTF.getText().length() == 0) {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        // alert.getStyleClass().add("alerts");
+                        alert.setContentText("You should select a file to open first!");
+                        alert.showAndWait();
+                    }
+                    else if (targTF.getText().length() == 0) {
+                        Alert alert = new Alert(AlertType.ERROR);
+                        alert.setContentText("You should indicate the Target Field.\nDo not leave it empty.");
+                        alert.showAndWait();
+                    }
+                    else {
+                        if (tValue.getText().length() == 0) {
+                            Alert alert = new Alert(AlertType.CONFIRMATION);
+                            alert.setContentText("You left the Target Value empty.\nAll valids will be printed.");
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.isPresent() 
+                                  && result.get() == ButtonType.CANCEL) {
+                                return;
+                            }
+                        }
+                        ProcessData.OpenFile(fnameTF.getText());
+                    }
+                }
+            }
+        );
+ 
+        hb4.getChildren().addAll(clearBtn, cancelBtn, okBtn);
         rootLayout.setBottom(hb4);
-
-
 
         primaryStage.show();
     } 

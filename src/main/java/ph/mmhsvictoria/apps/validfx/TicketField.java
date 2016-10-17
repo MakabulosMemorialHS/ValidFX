@@ -44,7 +44,7 @@ public class TicketField {
     private String TF_Field_Name;   // assert(TF_Field_Name is in uppercase)
     private String TF_Field_Value;  // assert(TF_Field_Value is in uppercase)
 
-    public String getFieldName(void) {
+    public String getFieldName() {
         return TF_Field_Name;
     }
 
@@ -52,7 +52,7 @@ public class TicketField {
         TF_Field_Name = newValue.toUpperCase();
     }
 
-    public String getFieldValue(void) {
+    public String getFieldValue() {
         return TF_Field_Name;
     }
 
@@ -60,7 +60,13 @@ public class TicketField {
         TF_Field_Value = newValue.toUpperCase();
     }
 
+
     /* This is the default constructor */
+    public TicketField() {
+        TF_Field_Name  = "";
+        TF_Field_Value = "";
+    }
+
     public TicketField(String fieldName, String fieldValue) {
         this.setFieldName(fieldName);
         this.setFieldValue(fieldValue);
@@ -69,7 +75,7 @@ public class TicketField {
         // assert(TF_Field_Value == TF_Field_Value.toUpperCase()); 
     }
 
-    public String toString(void) {
+    public String toString() {
         return String.format("%s:%s", TF_Field_Name, TF_Field_Value);
     }
 }

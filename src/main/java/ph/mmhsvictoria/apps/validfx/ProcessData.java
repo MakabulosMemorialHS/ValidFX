@@ -21,6 +21,7 @@ public class ProcessData {
         FileReader dF2;
         BufferedReader dataFile;
         String inbuffer;
+        // TicketField[] ticketFieldArray;
 
         try {
             dF2 = new FileReader(filename);

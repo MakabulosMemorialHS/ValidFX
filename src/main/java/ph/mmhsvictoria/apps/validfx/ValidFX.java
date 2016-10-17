@@ -121,7 +121,7 @@ public class ValidFX extends Application {
         );
  
 
-        Button cancelBtn = new Button("Cancel");
+        Button cancelBtn = new Button("Quit");
         cancelBtn.setCancelButton(true);
 
         cancelBtn.setOnAction(

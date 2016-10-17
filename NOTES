@@ -8,8 +8,16 @@ References:
     http://paletton.com/#uid=14q0u0kllll9rGbfosyrie8zI6X
 
 
+Manifest:
+---------
+data/data.txt
+ --- Sample data for testing.
+
+
 
 Logs:
 -----
+17 October 2016
+ --- Added the sample data data.txt to the repository.
 
 

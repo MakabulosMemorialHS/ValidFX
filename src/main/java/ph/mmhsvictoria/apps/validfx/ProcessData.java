@@ -21,7 +21,7 @@ public class ProcessData {
         FileReader dF2;
         BufferedReader dataFile;
         String inbuffer;
-        // TicketField[] ticketFieldArray;
+        TicketField ticklet = new TicketField();
 
         try {
             dF2 = new FileReader(filename);
@@ -35,9 +35,9 @@ public class ProcessData {
                 System.out.println("New Data");
                 String[] textData = inbuffer.split("\t");
                 for (int i = 0; i < textData.length; ++i) {
-                     System.out.println(
-                         String.format("Key: %s\tValue:%s", 
-                             headers[i], textData[i]));
+                    ticklet.setFieldName(headers[i]);
+                    ticklet.setFieldValue(textData[i]); 
+                    System.out.println(ticklet.toString());
                 }
             }
             dF2.close();

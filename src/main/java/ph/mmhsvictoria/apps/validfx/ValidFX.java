@@ -40,6 +40,10 @@ public class ValidFX extends Application {
     String fieldName;   /* The target field name */
     String fieldValue;  /* The target field value */
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
 
@@ -48,7 +52,8 @@ public class ValidFX extends Application {
         primaryStage.setTitle("Valids Processing");
         BorderPane rootLayout = new BorderPane();
         Scene vscene = new Scene(rootLayout);
-        vscene.getStylesheets().add("css/default.css");
+        vscene.getStylesheets().add("/ph/mmhsvictoria/apps/validfx/default.css");
+        // vscene.getStylesheets().add(getClass().getClassLoader().getResource("default.css").toString());
         primaryStage.setScene(vscene);
 
         GridPane vblayout = new GridPane();

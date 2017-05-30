@@ -7,6 +7,9 @@ References:
  1. Palette
     http://paletton.com/#uid=14q0u0kllll9rGbfosyrie8zI6X
 
+ 2. JavaFX Packaging Basics. (For how to jar)
+    http://docs.oracle.com/javafx/2/deployment/packaging.htm
+
 
 Manifest:
 ---------

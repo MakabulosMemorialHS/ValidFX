@@ -30,4 +30,13 @@ task runbuild << {
     System.out.println(retval);
 }
 
+task testjar << {
+    String cmd = "java -jar build/libs/ValidFX.jar"
+
+    System.out.println("\nExecuting the JAR file.\n");
+
+    String retval = cmd.execute().getText();
+    System.out.println(retval);
+}
+
 

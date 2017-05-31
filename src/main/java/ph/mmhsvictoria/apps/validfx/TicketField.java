@@ -28,10 +28,11 @@
  *     return reasonable values if confronted with a field that cannot
  *     be converted to either a double or an int.
  *
- * (d) Field Values will be stored as is. No conversion to upper or lower case Strings
- *     shall be made. When a search is carried out, the default search shall be
- *     case insensitive but a function shall also be provided to make the search
- *     case sensitive.
+ * (d) Field Values will be stored as is. It is the responsibility of the
+ *     program which shall be using this class to convert the string to a
+ *     reasonable format, whether UPPER CASE or lower case.
+ *
+ * (e) Field Names will be stored as UPPER CASE.
  *
  * ***********************************************************************************/
 package ph.mmhsvictoria.apps.validfx;
@@ -41,23 +42,45 @@ import java.util.*;
 
 
 public class TicketField {
-    private String TF_Field_Name;   // assert(TF_Field_Name is in uppercase)
-    private String TF_Field_Value;  // assert(TF_Field_Value is in uppercase)
+    private String TF_Field_Name;                        // assert(TF_Field_Name is in uppercase)
+    private String TF_Field_Value;                       // assert(TF_Field_Value is in uppercase)
 
-    public String getFieldName() {
+    public String getFieldName() {                       // Return with the Field Name of this TicketField
         return TF_Field_Name;
     }
 
-    public void setFieldName(String newValue) {
-        TF_Field_Name = newValue.toUpperCase();
+    public void setFieldName(String newValue) {          // The Field Name of this TicketField shall be ...
+        TF_Field_Name = newValue.toUpperCase().trim();   // Field names are all in UPPER CASE.
     }
 
-    public String getFieldValue() {
+    public String getFieldValue() {                      // Return with the Field Value as a String.
         return TF_Field_Name;
     }
 
-    public void setFieldValue(String newValue) {
-        TF_Field_Value = newValue.toUpperCase();
+    public void setFieldValue(String newValue) {         // The Field Value for this TicketField is ...
+        TF_Field_Value = newValue.trim();                // Field Values are stored as is.
+    }
+
+
+    public int compareFieldName(String astring) {
+        String fname = TF_Field_Name;
+        return fname.compareToIgnoreCase(astring);
+    }
+
+
+    public int compareFieldValueIgnoreCase(String astring) {
+        String fname = TF_Field_Value;
+        return fname.compareToIgnoreCase(astring);
+    }
+
+    public int compareFieldValue(String astring) {       // Case sensitive comparison.
+        String fname = TF_Field_Value;
+        return fname.compareTo(astring);
+    }
+
+
+    public double fieldValuetoDouble() {                 // Return with the Field Value as a double
+       return Double.parseDouble(this.TF_Field_Value);   // This just might throw and Exception. 
     }
 
 

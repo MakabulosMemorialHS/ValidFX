@@ -52,8 +52,23 @@ public class ValidFX extends Application {
         primaryStage.setTitle("Valids Processing");
         BorderPane rootLayout = new BorderPane();
         Scene vscene = new Scene(rootLayout);
+
         vscene.getStylesheets().add("/ph/mmhsvictoria/apps/validfx/default.css");
-        // vscene.getStylesheets().add(getClass().getClassLoader().getResource("default.css").toString());
+
+        /* 
+           Note the following facts about the above line:
+
+           (a) The relative path above is based on the relative path of default.css
+               insde the jar file. Obviously, the above is an incomplete path in the project
+               tree.
+           (b) To fix the incomplete path name above when this program is run during test,
+               the -cp flag is passed to java during the test to set the correct PWD.
+
+               ie: java -cp build/classes/main:build/resources/main ph.mmhsvictoria.apps.validfx.ValidFX
+         */
+        
+
+
         primaryStage.setScene(vscene);
 
         GridPane vblayout = new GridPane();
@@ -140,6 +155,7 @@ public class ValidFX extends Application {
 
         Button okBtn = new Button("OK");
 
+        /* Action on clicking OK Button (okBtn) */
         okBtn.setOnAction(
             new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent e) {

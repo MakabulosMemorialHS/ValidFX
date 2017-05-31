@@ -94,7 +94,9 @@
 /* For the TextFields. I find the default color so glaring. */
 
 .text-entries {
-    -fx-background-color : #a994ca;
+    /* -fx-background-color : #a994ca; */
+    -fx-background-color : #ffffff;
+    -fx-font-size : 12pt;
 }
 
 .h1 { /* For uses similar to HTML's H1 tag. */

@@ -18,15 +18,9 @@ import java.util.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.*;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -36,9 +30,13 @@ import javafx.stage.Stage;
 public class ValidFX extends Application {
 
     /* Properties of this Class */
-    String file2open;   /* Full pathname of file to open and read. */
-    String fieldName;   /* The target field name */
-    String fieldValue;  /* The target field value */
+    private static String file2open;   /* Full pathname of file to open and read. */
+    private static String fieldName;   /* The target field name */
+    private static String fieldValue;  /* The target field value */
+
+    private TextField fnameTF;
+    private TextField targTF;
+    private TextField tValue;
 
     public static void main(String[] args) {
         launch(args);
@@ -48,14 +46,19 @@ public class ValidFX extends Application {
     public void start(Stage primaryStage) {
 
 
-        /* Set the Stage and the Scene */
+        /* Prepare the Stage and the Scene */
         primaryStage.setTitle("Valids Processing");
         BorderPane rootLayout = new BorderPane();
+
         Scene vscene = new Scene(rootLayout);
-
         vscene.getStylesheets().add("/ph/mmhsvictoria/apps/validfx/default.css");
+        primaryStage.setScene(vscene);
+        GridPane vblayout = new GridPane();
+        rootLayout.setCenter(vblayout);
+        vblayout.getStyleClass().add("grid");
 
-        /* 
+
+        /* *****************************************************************************************************
            Note the following facts about the above line:
 
            (a) The relative path above is based on the relative path of default.css
@@ -65,27 +68,22 @@ public class ValidFX extends Application {
                the -cp flag is passed to java during the test to set the correct PWD.
 
                ie: java -cp build/classes/main:build/resources/main ph.mmhsvictoria.apps.validfx.ValidFX
-         */
+         * *****************************************************************************************************/
         
-
-
-        primaryStage.setScene(vscene);
-
-        GridPane vblayout = new GridPane();
-        rootLayout.setCenter(vblayout);
-        vblayout.getStyleClass().add("grid");
-
-
         /* --- The first line determines the file name of the data to read. --- */
 
+        // Add the widget/graphic elements to the scene.
+
+        // The File to open.
         Text t1 = new Text("File Name");
         vblayout.add(t1, 0, 0); // Column 0, row 0
         t1.getStyleClass().add("field-labels");
 
-        TextField fnameTF = new TextField();
+        fnameTF = new TextField();
         fnameTF.getStyleClass().add("text-entries");
         vblayout.add(fnameTF, 1, 0, 3, 1); // column 1, row 0, colspan 3, rowspan 1
 
+        // The browse button
         Button browseBtn = new Button("Browse");
         vblayout.add(browseBtn, 4, 0);  // col 4, row 0 
         
@@ -99,33 +97,29 @@ public class ValidFX extends Application {
         );
  
 
-        /* The second line identifies the target field name */
-
+        /* The Target Field name */
         Text t2 = new Text("Target Field");
         t2.getStyleClass().add("field-labels");
         vblayout.add(t2, 0, 1); // Column 0, row 1 
 
-        TextField targTF = new TextField();
+        targTF = new TextField();
         targTF.getStyleClass().add("text-entries");
         vblayout.add(targTF, 1, 1, 3, 1); // column 1, row 1, colspan 3, rowspan 1
  
 
-        /* The third line identifies the target value */
-
+        /* The Target value */
         Text t3 = new Text("Target Value");
         t3.getStyleClass().add("field-labels");
         vblayout.add(t3, 0, 2); // Column 0, row 2 
 
-        TextField tValue = new TextField();
+        tValue = new TextField();
         tValue.getStyleClass().add("text-entries");
         vblayout.add(tValue, 1, 2, 3, 1); // column 1, row 2, colspan 3, rowspan 1
 
 
-        /* The last line contains the buttons */
-
+        /* The buttons */
         HBox hb4 = new HBox();
         hb4.getStyleClass().add("button-box");
-
 
         Button clearBtn = new Button("Clear");
         clearBtn.setCancelButton(true);
@@ -156,41 +150,44 @@ public class ValidFX extends Application {
         Button okBtn = new Button("OK");
 
         /* Action on clicking OK Button (okBtn) */
-        okBtn.setOnAction(
-            new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e) {
-                    if (fnameTF.getText().length() == 0) {
-                        Alert alert = new Alert(AlertType.ERROR);
-                        // alert.getStyleClass().add("alerts");
-                        alert.setContentText("You should select a file to open first!");
-                        alert.showAndWait();
-                    }
-                    else if (targTF.getText().length() == 0) {
-                        Alert alert = new Alert(AlertType.ERROR);
-                        alert.setContentText("You should indicate the Target Field.\nDo not leave it empty.");
-                        alert.showAndWait();
-                    }
-                    else {
-                        if (tValue.getText().length() == 0) {
-                            Alert alert = new Alert(AlertType.CONFIRMATION);
-                            alert.setContentText("You left the Target Value empty.\nAll valids will be printed.");
-                            Optional<ButtonType> result = alert.showAndWait();
-                            if (result.isPresent() 
-                                  && result.get() == ButtonType.CANCEL) {
-                                return;
-                            }
-                        }
-                        ProcessData.OpenFile(fnameTF.getText());
-                    }
-                }
-            }
-        );
+        okBtn.setOnAction(e -> OKButtonHandler());
  
         hb4.getChildren().addAll(clearBtn, cancelBtn, okBtn);
         rootLayout.setBottom(hb4);
 
+        // Show the primaryStage.
         primaryStage.show();
     } 
-    
+   
+
+    public void OKButtonHandler() {
+	file2open  = fnameTF.getText().trim();
+	fieldName  = targTF.getText().trim();
+	fieldValue = tValue.getText().trim();
+
+	if (file2open.length() == 0) {
+	    Alert alert = new Alert(AlertType.ERROR);
+	    // alert.getStyleClass().add("alerts");
+	    alert.setContentText("You should select a file to open first!");
+	    alert.showAndWait();
+	}
+	else if (fieldName.length() == 0) {
+	    Alert alert = new Alert(AlertType.ERROR);
+	    alert.setContentText("You should indicate the Target Field.\nDo not leave it empty.");
+	    alert.showAndWait();
+	}
+	else {
+	    if (fieldValue.length() == 0) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setContentText("You left the Target Value empty.\nAll valids will be printed.");
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.isPresent() 
+		      && result.get() == ButtonType.CANCEL) {
+		    return;
+		}
+	    }
+	    ProcessData.OpenFile(file2open, fieldName, fieldValue);
+	}
+    } 
 }
 

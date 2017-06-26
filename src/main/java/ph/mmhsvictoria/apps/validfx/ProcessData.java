@@ -13,7 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class ProcessData {
-    public static void OpenFile(String filename) {
+    public static void OpenFile(String filename, String targetField, String targetValue) {
 
         // File dF = new File(filename);     I am just leaving this here but
         //                                   I don't really need it anymore.
@@ -21,7 +21,7 @@ public class ProcessData {
         FileReader dF2;
         BufferedReader dataFile;
         String inbuffer;
-        TicketField ticklet = new TicketField();
+        TicketDeck  tickdeck = new TicketDeck();     // Size of the deck is the default size.
 
         try {
             dF2 = new FileReader(filename);
@@ -32,12 +32,16 @@ public class ProcessData {
             String[] headers = hdr.split("\t");
 
             while ((inbuffer = dataFile.readLine()) != null) {
-                System.out.println("New Data");
+                Ticket bticket = new Ticket();
+                // System.out.println("New Data");
                 String[] textData = inbuffer.split("\t");
                 for (int i = 0; i < textData.length; ++i) {
-                    ticklet.setFieldName(headers[i]);
-                    ticklet.setFieldValue(textData[i]); 
-                    System.out.println(ticklet.toString());
+                    TicketField tfield = new TicketField(headers[i], textData[i]);
+                    bticket.add(tfield);
+                }
+                if (bticket.hasFieldValue(targetField, targetValue)) {
+		    tickdeck.add(bticket);
+		    bticket.dump();
                 }
             }
             dF2.close();

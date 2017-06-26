@@ -45,16 +45,27 @@ public class TicketField {
     private String TF_Field_Name;                        // assert(TF_Field_Name is in uppercase)
     private String TF_Field_Value;                       // assert(TF_Field_Value is in uppercase)
 
+    public TicketField(String key, String value) {
+        TF_Field_Name = key.toUpperCase().trim();
+        TF_Field_Value = value.trim();
+    }
+
+    public TicketField() {
+        TF_Field_Name  = "";
+        TF_Field_Value = "";
+    }
+
+
     public String getFieldName() {                       // Return with the Field Name of this TicketField
         return TF_Field_Name;
     }
 
-    public void setFieldName(String newValue) {          // The Field Name of this TicketField shall be ...
-        TF_Field_Name = newValue.toUpperCase().trim();   // Field names are all in UPPER CASE.
+    public String getFieldValue() {                      // Return with the Field Value as a String.
+        return TF_Field_Value;
     }
 
-    public String getFieldValue() {                      // Return with the Field Value as a String.
-        return TF_Field_Name;
+    public void setFieldName(String newValue) {          // The Field Name of this TicketField shall be ...
+        TF_Field_Name = newValue.toUpperCase().trim();   // Field names are all in UPPER CASE.
     }
 
     public void setFieldValue(String newValue) {         // The Field Value for this TicketField is ...
@@ -66,6 +77,12 @@ public class TicketField {
         String fname = TF_Field_Name;
         return fname.compareToIgnoreCase(astring);
     }
+
+    public int compareFieldNameIgnoreCase(String astring) {
+        String fname = TF_Field_Name;
+        return fname.compareToIgnoreCase(astring);
+    }
+
 
 
     public int compareFieldValueIgnoreCase(String astring) {
@@ -83,20 +100,6 @@ public class TicketField {
        return Double.parseDouble(this.TF_Field_Value);   // This just might throw and Exception. 
     }
 
-
-    /* This is the default constructor */
-    public TicketField() {
-        TF_Field_Name  = "";
-        TF_Field_Value = "";
-    }
-
-    public TicketField(String fieldName, String fieldValue) {
-        this.setFieldName(fieldName);
-        this.setFieldValue(fieldValue);
-
-        // assert(TF_Field_Name  == TF_Field_Name.toUpperCase()); 
-        // assert(TF_Field_Value == TF_Field_Value.toUpperCase()); 
-    }
 
     public String toString() {
         return String.format("%s:%s", TF_Field_Name, TF_Field_Value);

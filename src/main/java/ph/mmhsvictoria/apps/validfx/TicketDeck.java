@@ -6,6 +6,8 @@
  * *****************************************************************************/
 package ph.mmhsvictoria.apps.validfx;
 
+import java.lang.*;
+import java.util.*;
 
 public class TicketDeck {
     private Ticket ticketArray[];
@@ -49,6 +51,14 @@ public class TicketDeck {
             return ticketArray[index];
         }
         return ticketArray[index];
+    }
+
+    // Print the TicketDeck using JavaFX Facilities.
+    //
+    public void printFX() {
+
+
+        System.out.printf("For implementation.");
     }
 }
 

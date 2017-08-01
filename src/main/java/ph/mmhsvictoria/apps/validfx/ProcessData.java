@@ -21,7 +21,7 @@ public class ProcessData {
         FileReader dF2;
         BufferedReader dataFile;
         String inbuffer;
-        TicketDeck  tickdeck = new TicketDeck();     // Size of the deck is the default size.
+        TicketDeck tickdeck = new TicketDeck();     // Size of the deck is the default size.
 
         try {
             dF2 = new FileReader(filename);
@@ -43,6 +43,11 @@ public class ProcessData {
 		    tickdeck.add(bticket);
 		    bticket.dump();
                 }
+                else if (targetValue.length() == 0) {
+		    tickdeck.add(bticket);
+		    bticket.dump();
+                }
+
             }
             dF2.close();
         }

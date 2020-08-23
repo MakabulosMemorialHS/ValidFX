@@ -1,42 +1,17 @@
-apply plugin: 'java'
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
 
-jar {
-    manifest {
-        attributes('Main-Class' : 'ph.mmhsvictoria.apps.validfx.ValidFX',
-                   'Class-Path' : '.')
-    }
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "13"
+    modules = ['javafx.controls'] // javafx.base --- will include all javafx modules
 }
 
 
-task runapp << {
-    String cmd = "java -cp build/classes/main:src/main/resources ph.mmhsvictoria.apps.validfx.ValidFX"
-
-    System.out.println("\nRunning with Resource Files in Source Directory.");
-    System.out.println("Use this task when testing the CSS Stylesheet.\n");
-
-    String retval = cmd.execute().getText();
-    System.out.println(retval);
-}
-
-
-task runbuild << {
-    String cmd = "java -cp build/classes/main:build/resources/main ph.mmhsvictoria.apps.validfx.ValidFX"
-
-    System.out.println("\nRunning with Resource Files in Build Directory.");
-    System.out.println("Use this task to see the build result.");
-    System.out.println("Execute gradle build if CSS Style is inconsistent with Source Set.\n");
-
-    String retval = cmd.execute().getText();
-    System.out.println(retval);
-}
-
-task testjar << {
-    String cmd = "java -jar build/libs/ValidFX.jar"
-
-    System.out.println("\nExecuting the JAR file.\n");
-
-    String retval = cmd.execute().getText();
-    System.out.println(retval);
-}
-
+mainClassName = 'ValidFX'
 

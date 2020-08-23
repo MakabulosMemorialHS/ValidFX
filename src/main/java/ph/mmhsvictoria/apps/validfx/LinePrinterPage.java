@@ -18,9 +18,7 @@ public class LinePrinterPage {
     private StringBuffer pLines[];                     // StringBuffers are mutable. Strings are not.
 
     // Default constructor 
-    public LinePrinterPage(void) {
+    public void LinePrinterPage() {
         pLines = new StringBuffer[78];                 // Prep 78 lines in the LinePrinterPage.
-        for (int
-    
     }
 }

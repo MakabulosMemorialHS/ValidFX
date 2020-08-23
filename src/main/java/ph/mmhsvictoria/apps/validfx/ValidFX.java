@@ -84,7 +84,7 @@ public class ValidFX extends Application {
         vblayout.add(fnameTF, 1, 0, 3, 1); // column 1, row 0, colspan 3, rowspan 1
 
         // The browse button
-        Button browseBtn = new Button("Browse");
+        Button browseBtn = new Button("Browse"); browseBtn.setPrefWidth(70);
         vblayout.add(browseBtn, 4, 0);  // col 4, row 0 
         
         browseBtn.setOnAction(
@@ -122,35 +122,34 @@ public class ValidFX extends Application {
         hb4.getStyleClass().add("button-box");
 
         Button clearBtn = new Button("Clear");
-        clearBtn.setCancelButton(true);
-
-        clearBtn.setOnAction(
-            new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e) {
-                    fnameTF.setText("");
-                    targTF.setText(""); 
-                    tValue.setText(""); 
-                }
-            }
-        );
+            clearBtn.setCancelButton(true);
+            clearBtn.setPrefWidth(70);
+	    clearBtn.setOnAction(
+		new EventHandler<ActionEvent>() {
+		    public void handle(ActionEvent e) {
+			fnameTF.setText("");
+			targTF.setText(""); 
+			tValue.setText(""); 
+		    }
+		}
+	    );
  
 
         Button cancelBtn = new Button("Quit");
-        cancelBtn.setCancelButton(true);
-
-        cancelBtn.setOnAction(
-            new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e) {
-                    Platform.exit();
-                }
-            }
-        );
+	    cancelBtn.setCancelButton(true);
+            cancelBtn.setPrefWidth(70);
+	    cancelBtn.setOnAction(
+		new EventHandler<ActionEvent>() {
+		    public void handle(ActionEvent e) {
+			Platform.exit();
+		    }
+		}
+	    );
  
 
         Button okBtn = new Button("OK");
-
-        /* Action on clicking OK Button (okBtn) */
-        okBtn.setOnAction(e -> OKButtonHandler());
+            okBtn.setOnAction(e -> OKButtonHandler());
+            okBtn.setPrefWidth(70);
  
         hb4.getChildren().addAll(clearBtn, cancelBtn, okBtn);
         rootLayout.setBottom(hb4);

@@ -9,9 +9,8 @@ repositories {
 
 javafx {
     version = "13"
-    modules = ['javafx.controls'] // javafx.base --- will include all javafx modules
+    modules = ['javafx.controls', 'javafx.fxml'] // javafx.base --- will include all javafx modules
 }
 
-
-mainClassName = 'ValidFX'
+mainClassName = 'ph.mmhsvictoria.apps.validfx.ValidFX'
 

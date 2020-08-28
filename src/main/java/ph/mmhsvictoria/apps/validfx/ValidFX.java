@@ -32,7 +32,7 @@ import java.net.URL;
 public class ValidFX extends Application {
 
     public static void main(String[] args) {
-        System.out.println("Hello Michelle Fuentebella!");
+        // System.out.println("Hello Michelle Fuentebella!");
         launch(args);
     }
 

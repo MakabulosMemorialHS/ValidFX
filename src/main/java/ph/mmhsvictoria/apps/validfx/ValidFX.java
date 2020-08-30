@@ -31,8 +31,15 @@ import java.net.URL;
 
 public class ValidFX extends Application {
 
+    public static void systemProperties() {
+        System.out.println("OS : " + System.getProperty("os.name"));
+        System.out.println("OS Arch : " + System.getProperty("os.arch"));
+        System.out.println("Classpath : " + System.getProperty("java.class.path"));
+    }
+
     public static void main(String[] args) {
         System.out.println("Hello Michelle Fuentebella!");
+        systemProperties();
         launch(args);
     }
 
@@ -55,7 +62,7 @@ public class ValidFX extends Application {
 
         loader.setLocation(new URL("file://" + path_to_resource));
         
-        VBox root = loader.<VBox>load();
+        VBox root = loader.<VBox>load();  // I still don't understand how this works.
 
         primaryStage.setTitle("Valids Ticket Creator JavaFX Version");
         primaryStage.setScene(new Scene(root, 400, 300));

@@ -1,12 +1,12 @@
 /* *******************************************************************************
  * default.css
  *
- * Style sheet for PressConFX. This is a rather generic
+ * Style sheet for ValidFX. This is a rather generic
  * stylesheet. If you want to create your own style rules
- * for PressConFX, copy this stylesheet to PressConFX.css
+ * for ValidFX, copy this stylesheet to ValidFX.css
  * and modify the style rules there.
  *
- * PressConFX.css overrides the rules of default.css.
+ * ValidFX.css overrides the rules of default.css.
  *
  *
  * Information about the CSS properties mentioned herein can be
@@ -36,7 +36,7 @@
 
 .grid {
     -fx-background-color : #110326; 
-    /* -fx-background-image : url("dark-blue-background-portrait.jpg"); */
+    -fx-background-image : url("dark-blue-background-portrait.jpg"); /* */
 
     /* The following rules are meant for background images.
        Commented out since I don't need it for the current rule.
@@ -59,7 +59,7 @@
 
 .grid2 {
     -fx-background-color : #110326; 
-    /* -fx-background-image : url("dark-blue-background-portrait.jpg"); */
+    -fx-background-image : url("dark-blue-background-portrait.jpg"); /* */
 
     /* The following rules are meant for background images.
        Commented out since I don't need it for the current rule.
@@ -87,7 +87,24 @@
     -fx-alignment : center-right;   /* Where the buttons are located. */
     -fx-padding : 5pt;              /* The spacing around contents of the HBox */
     -fx-spacing : 10pt;             /* Spacing between Buttons */
-    -fx-background-color : #28114d; /* Color of the HBox */
+    // -fx-background-color : #28114d; /* Color of the HBox */
+}
+
+/* For the HBox containing the input fields. */
+
+.text-entry-box {
+    -fx-alignment : center-left;   /* Where the buttons are located. */
+    // -fx-padding : 5pt;              /* The spacing around contents of the HBox */
+    -fx-spacing : 10pt;             /* Spacing between elements of the text-entry-box */
+    // -fx-background-color : #28114d; /* Color of the HBox */
+}
+
+
+/* Color of the buttons */
+
+.buttons {
+    -fx-background-color : #28114d;
+    -fx-text-fill : #ffffff;    /* This is the font color. It is pure white. */
 }
 
 
@@ -101,7 +118,7 @@
 
 .h1 { /* For uses similar to HTML's H1 tag. */
     -fx-font-size : 17pt;
-    -fx-fill : #fff9e6;   /* This would be the font color. No joking. */
+    -fx-fill : #fff9e6;   /* This would be the font color. */
     -fx-text-alignment : center;
     -fx-font-weight : normal;
     -fx-padding : 15pt;
@@ -122,14 +139,14 @@
 .field-labels { /* Used for labelling text fields */
     -fx-font-size : 12pt;
     -fx-text-alignment : center;
-    -fx-fill : #ffffff;    /* This is the font color. It is pure white. */
+    -fx-text-fill : #ffffff;    /* This is the font color. It is pure white. */
     /* -fx-fill : #fff9e6;   This is the old color. */
 }
 
 
-.normaltext { /* Used for normal sized Text labels */
+.normal-text { /* Used for normal sized Text labels */
     /* -fx-font-size : 12pt; */
     -fx-text-alignment : right;
-    /* -fx-fill : #fff9e6;   This would be the font color. No joking. */
+    -fx-text-fill : #fff9e6;   /* This would be the font color. */
 }
 

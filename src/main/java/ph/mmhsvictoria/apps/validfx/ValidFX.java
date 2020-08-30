@@ -55,10 +55,11 @@ public class ValidFX extends Application {
 
         loader.setLocation(new URL("file://" + path_to_resource));
         
-        VBox root = loader.<VBox>load();
+        VBox root = loader.load(); // This one works the same as loader.<VBox>load() because
+                                   // the return value of FXMLLoader.load() is <T> T.
 
         primaryStage.setTitle("Valids Ticket Creator JavaFX Version");
-        primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.setScene(new Scene(root, 500, 200));
         primaryStage.show();
     }
 }

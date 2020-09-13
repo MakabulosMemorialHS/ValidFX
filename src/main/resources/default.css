@@ -103,8 +103,8 @@
 /* Color of the buttons */
 
 .buttons {
-    -fx-background-color : #28114d;
-    -fx-text-fill : #ffffff;    /* This is the font color. It is pure white. */
+    /* -fx-background-color : #28114d; */
+    /* -fx-text-fill : #ffffff;     This is the font color. It is pure white. */
 }
 
 

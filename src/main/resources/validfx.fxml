@@ -8,6 +8,7 @@
 <?import java.net.URL?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" styleClass="grid">
+<!--Note that no actual fetch from javafx.com is done here.-->
     <children>
         <HBox styleClass="text-entry-box">
             <Label text = "File Name" styleClass="field-labels"/>
